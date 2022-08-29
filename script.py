@@ -1,129 +1,129 @@
 import yfinance as yf
-    import pandas as pd
-    import dataframe_image as dfi
+import pandas as pd
+import dataframe_image as dfi
 
-    ds = pd.read_csv('db.csv')
-    df = pd.read_csv('crash.csv')
+ds = pd.read_csv('db.csv')
+df = pd.read_csv('crash.csv')
 
-    list1= ['RELIANCE.NS','HDFCBANK.NS','INFY.NS','ICICIBANK.NS','HDFC.NS','TCS.NS','KOTAKBANK.NS','ITC.NS','HINDUNILVR.NS','LT.NS','SBIN.NS','AXISBANK.NS','BHARTIARTL.NS','BAJFINANCE.NS','ASIANPAINT.NS','MARUTI.NS','M&M.NS','HCLTECH.NS','SUNPHARMA.NS','TITAN.NS','TATAMOTORS.NS','POWERGRID.NS','TATASTEEL.NS', 'NTPC.NS', 'BAJAJFINSV.NS', 'ULTRACEMCO.NS','TECHM.NS','NESTLEIND.NS','WIPRO.NS','ONGC.NS','JSWSTEEL.NS','DRREDDY.NS','INDUSINDBK.NS','HDFCLIFE.NS','GRASIM.NS','CIPLA.NS','HINDALCO.NS','ADANIPORTS.NS','SBILIFE.NS','BAJAJ-AUTO.NS','DIVISLAB.NS','TATACONSUM.NS','BRITANNIA.NS','COALINDIA.NS','EICHERMOT.NS','APOLLOHOSP.NS','HEROMOTOCO.NS','UPL.NS','BPCL.NS','SHREECEM.NS']
-    print('A')
-    count=0
+list1= ['RELIANCE.NS','HDFCBANK.NS','INFY.NS','ICICIBANK.NS','HDFC.NS','TCS.NS','KOTAKBANK.NS','ITC.NS','HINDUNILVR.NS','LT.NS','SBIN.NS','AXISBANK.NS','BHARTIARTL.NS','BAJFINANCE.NS','ASIANPAINT.NS','MARUTI.NS','M&M.NS','HCLTECH.NS','SUNPHARMA.NS','TITAN.NS','TATAMOTORS.NS','POWERGRID.NS','TATASTEEL.NS', 'NTPC.NS', 'BAJAJFINSV.NS', 'ULTRACEMCO.NS','TECHM.NS','NESTLEIND.NS','WIPRO.NS','ONGC.NS','JSWSTEEL.NS','DRREDDY.NS','INDUSINDBK.NS','HDFCLIFE.NS','GRASIM.NS','CIPLA.NS','HINDALCO.NS','ADANIPORTS.NS','SBILIFE.NS','BAJAJ-AUTO.NS','DIVISLAB.NS','TATACONSUM.NS','BRITANNIA.NS','COALINDIA.NS','EICHERMOT.NS','APOLLOHOSP.NS','HEROMOTOCO.NS','UPL.NS','BPCL.NS','SHREECEM.NS']
 
-    for values in list1:
-        msft = yf.Ticker(f"{values}")
-        hist = msft.history(period="1d", interval="1d")
-        ser = pd.Series(hist['Close'])
-        df['Close'][count]=round(ser[0], 2)
+count=0
+
+for values in list1:
+msft = yf.Ticker(f"{values}")
+hist = msft.history(period="1d", interval="1d")
+ser = pd.Series(hist['Close'])
+df['Close'][count]=round(ser[0], 2)
 
 
-        df['Percentage Change'][count] =  ((round(ser[0],2)-round(ds['26-Aug-22'][count],2))/round(ds['26-Aug-22'][count],2))*100
+df['Percentage Change'][count] =  ((round(ser[0],2)-round(ds['26-Aug-22'][count],2))/round(ds['26-Aug-22'][count],2))*100
 
-        count = count+1
+count = count+1
 
-    del df['Unnamed: 0']
+del df['Unnamed: 0']
 
-    def Highlight_Majors(val):
+def Highlight_Majors(val):
 
-        color = 'black' if type(val) == str else 'dark'
-        if color=='dark' and val<50:
-            color = 'red' if val < 0 else 'black'
-            color = 'green' if val > 0 else color
-        return 'color: %s' % color
+color = 'black' if type(val) == str else 'dark'
+if color=='dark' and val<50:
+    color = 'red' if val < 0 else 'black'
+    color = 'green' if val > 0 else color
+return 'color: %s' % color
 
-    df = df.style.applymap(Highlight_Majors)
+df = df.style.applymap(Highlight_Majors)
 
-    dfi.export(df, 'df_styled.jpg')
-    print('b')
-    import smtplib
-    from email.mime.multipart import MIMEMultipart
-    from email.mime.text import MIMEText
-    from email.mime.base import MIMEBase
-    from email import encoders
-    import datetime
-    # import pdfkit
+dfi.export(df, 'df_styled.jpg')
 
-    x = datetime.datetime.now()
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.base import MIMEBase
+from email import encoders
+import datetime
+# import pdfkit
 
-    body = f'''
-    Hello,
+x = datetime.datetime.now()
 
-    Kindly Find Below Today's({x}) Stock Report [[After Crash - August Crash]]
+body = f'''
+Hello,
 
-    Yours sincerely
+Kindly Find Below Today's({x}) Stock Report [[After Crash - August Crash]]
 
-    Booyah!
-    '''
+Yours sincerely
 
-    sender = 'stocksdetails12345@gmail.com'
+Booyah!
+'''
 
-    password = 'wkucubjnjkvouaea'
+sender = 'stocksdetails12345@gmail.com'
 
-    receiver = "tannahiren42@gmail.com, tannaom69@gmail.com"
+password = 'wkucubjnjkvouaea'
 
-    #Setup the MIME
-    message = MIMEMultipart()
-    message['From'] = 'stocksdetails12345@gmail.com'
-    message['To'] = "tannahiren42@gmail.com, tannaom69@gmail.com"
-    message['Subject'] = 'This email has an attacment, a pdf file'
+receiver = "tannahiren42@gmail.com, tannaom69@gmail.com"
 
-    message.attach(MIMEText(body, 'plain'))
-    #
-    print('c')
-    import img2pdf
-    from PIL import Image
+#Setup the MIME
+message = MIMEMultipart()
+message['From'] = 'stocksdetails12345@gmail.com'
+message['To'] = "tannahiren42@gmail.com, tannaom69@gmail.com"
+message['Subject'] = 'This email has an attacment, a pdf file'
 
-    # storing image path
-    img_path = "df_styled.jpg"
+message.attach(MIMEText(body, 'plain'))
+#
 
-    # storing pdf path
-    pdf_path = "final.pdf"
+import img2pdf
+from PIL import Image
 
-    # opening image
-    image = Image.open(img_path)
+# storing image path
+img_path = "df_styled.jpg"
 
-    # converting into chunks using img2pdf
-    pdf_bytes = img2pdf.convert(image.filename)
+# storing pdf path
+pdf_path = "final.pdf"
 
-    # opening or creating pdf file
-    file = open(pdf_path, "wb")
+# opening image
+image = Image.open(img_path)
 
-    # writing pdf files with chunks
-    file.write(pdf_bytes)
+# converting into chunks using img2pdf
+pdf_bytes = img2pdf.convert(image.filename)
 
-    # closing image file
-    image.close()
+# opening or creating pdf file
+file = open(pdf_path, "wb")
 
-    # closing pdf file
-    file.close()
+# writing pdf files with chunks
+file.write(pdf_bytes)
 
-    #
+# closing image file
+image.close()
 
-    pdfname = 'final.pdf'
-    print('d')
-    # open the file in bynary
-    binary_pdf = open(pdfname, 'rb')
+# closing pdf file
+file.close()
 
-    payload = MIMEBase('application', 'octate-stream', Name=pdfname)
-    # payload = MIMEBase('application', 'pdf', Name=pdfname)
-    payload.set_payload((binary_pdf).read())
+#
 
-    # enconding the binary into base64
-    encoders.encode_base64(payload)
+pdfname = 'final.pdf'
 
-    # add header with pdf name
-    payload.add_header('Content-Decomposition', 'attachment', filename=pdfname)
-    message.attach(payload)
+# open the file in bynary
+binary_pdf = open(pdfname, 'rb')
 
-    #use gmail with port
-    session = smtplib.SMTP('smtp.gmail.com', 587)
+payload = MIMEBase('application', 'octate-stream', Name=pdfname)
+# payload = MIMEBase('application', 'pdf', Name=pdfname)
+payload.set_payload((binary_pdf).read())
 
-    #enable security
-    session.starttls()
+# enconding the binary into base64
+encoders.encode_base64(payload)
 
-    #login with mail_id and password
-    session.login(sender, password)
+# add header with pdf name
+payload.add_header('Content-Decomposition', 'attachment', filename=pdfname)
+message.attach(payload)
 
-    text = message.as_string()
-    session.sendmail(sender, receiver.split(","), text)
-    session.quit()
-    print('Mail Sent')
+#use gmail with port
+session = smtplib.SMTP('smtp.gmail.com', 587)
+
+#enable security
+session.starttls()
+
+#login with mail_id and password
+session.login(sender, password)
+
+text = message.as_string()
+session.sendmail(sender, receiver.split(","), text)
+session.quit()
+print('Mail Sent')
