@@ -10,25 +10,25 @@ list1= ['RELIANCE.NS','HDFCBANK.NS','INFY.NS','ICICIBANK.NS','HDFC.NS','TCS.NS',
 count=0
 
 for values in list1:
-msft = yf.Ticker(f"{values}")
-hist = msft.history(period="1d", interval="1d")
-ser = pd.Series(hist['Close'])
-df['Close'][count]=round(ser[0], 2)
+    msft = yf.Ticker(f"{values}")
+    hist = msft.history(period="1d", interval="1d")
+    ser = pd.Series(hist['Close'])
+    df['Close'][count]=round(ser[0], 2)
 
 
-df['Percentage Change'][count] =  ((round(ser[0],2)-round(ds['26-Aug-22'][count],2))/round(ds['26-Aug-22'][count],2))*100
+    df['Percentage Change'][count] =  ((round(ser[0],2)-round(ds['26-Aug-22'][count],2))/round(ds['26-Aug-22'][count],2))*100
 
-count = count+1
+    count = count+1
 
 del df['Unnamed: 0']
 
 def Highlight_Majors(val):
 
-color = 'black' if type(val) == str else 'dark'
-if color=='dark' and val<50:
-    color = 'red' if val < 0 else 'black'
-    color = 'green' if val > 0 else color
-return 'color: %s' % color
+    color = 'black' if type(val) == str else 'dark'
+    if color=='dark' and val<50:
+        color = 'red' if val < 0 else 'black'
+        color = 'green' if val > 0 else color
+    return 'color: %s' % color
 
 df = df.style.applymap(Highlight_Majors)
 
@@ -127,3 +127,4 @@ text = message.as_string()
 session.sendmail(sender, receiver.split(","), text)
 session.quit()
 print('Mail Sent')
+
