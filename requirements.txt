@@ -2,7 +2,6 @@ schedule
 yfinance
 pandas
 dataframe_image
-datetime
-email 
+datetime 
 img2pdf
 PIL
