@@ -2,7 +2,7 @@ schedule
 yfinance
 pandas
 dataframe_image
-email.utils
+pycopy-email.utils
 smtplib
 datetime
 img2pdf
