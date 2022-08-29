@@ -2,6 +2,7 @@ import schedule
 import time
 
 def job(t):
+    print('process started')
     import yfinance as yf
     import pandas as pd
     import warnings
@@ -40,7 +41,7 @@ def job(t):
     df = df.style.applymap(Highlight_Majors)
 
     dfi.export(df, 'df_styled.jpg')
-
+    print('image created')
     import smtplib
     from email.mime.multipart import MIMEMultipart
     from email.mime.text import MIMEText
@@ -104,7 +105,7 @@ def job(t):
     file.close()
 
     #
-
+    print('pdf attached')
     pdfname = 'final.pdf'
 
     # open the file in bynary
@@ -134,8 +135,9 @@ def job(t):
     session.sendmail(sender, receiver.split(","), text)
     session.quit()
     print('Mail Sent')
+    print(t)
 
-schedule.every().day.at("19:30").do(job,'It is 19:30')
+schedule.every().day.at("19:37").do(job,'It is 19:37')
 while True:
     schedule.run_pending()
-    time.sleep(60) # wait one minute
+    time.sleep(6) # wait one minute
