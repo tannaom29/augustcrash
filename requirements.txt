@@ -2,7 +2,6 @@ schedule
 yfinance
 pandas
 dataframe_image
-smtplib
 datetime
 email.mime.multipart
 email.mime.text
