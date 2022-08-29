@@ -3,9 +3,6 @@ yfinance
 pandas
 dataframe_image
 datetime
-email.mime.multipart
-email.mime.text
-email.mime.base
 email 
 img2pdf
 PIL
