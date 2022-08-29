@@ -31,7 +31,6 @@ dill==0.3.5.1
 disk==2021.6.29
 dispatch==2.0.6
 distro==1.7.0
-djangorestframework==3.12.2
 docopt==0.6.2
 entrypoints==0.4
 et-xmlfile==1.1.0
@@ -65,7 +64,6 @@ jsonschema==4.14.0
 jupyter_client==7.3.5
 jupyter-core==4.11.1
 jupyterlab-pygments==0.2.2
-Keras-Preprocessing==1.1.2
 kiwisolver==1.4.4
 libclang==14.0.1
 lightgbm==3.3.2
@@ -143,8 +141,6 @@ tabula-py==2.5.1
 tensorboard==2.9.1
 tensorboard-data-server==0.6.1
 tensorboard-plugin-wit==1.8.1
-tensorflow-estimator==2.9.0
-tensorflow-io-gcs-filesystem==0.26.0
 termcolor==1.1.0
 textblob==0.17.1
 threadpoolctl==3.1.0
