@@ -1,0 +1,11 @@
+time
+schedule
+yfinance
+pandas
+warnings
+dataframe-image
+email.utils
+smtplib
+datetime
+img2pdf
+PIL
