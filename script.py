@@ -137,7 +137,7 @@ def job(t):
     print('Mail Sent')
     print(t)
 
-schedule.every().day.at("13:52").do(job,'It is 19:45')
+schedule.every(1).minutes.at(":00").do(job,'It is 19:45')
 while True:
     schedule.run_pending()
     time.sleep(6) # wait one minute
