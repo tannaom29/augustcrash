@@ -4,4 +4,3 @@ pandas
 dataframe_image
 datetime 
 img2pdf
-PIL
