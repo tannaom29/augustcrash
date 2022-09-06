@@ -47,7 +47,7 @@ def run():
     worksheet.save("output.xlsx")
 
     import jpype
-    jpype.startJVM()
+#     jpype.startJVM()
     from asposecells.api import Workbook, SaveFormat
 
     # Load Excel file
