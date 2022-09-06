@@ -4,3 +4,4 @@ pandas
 dataframe_image
 datetime 
 img2pdf
+pandas_market_calendars
